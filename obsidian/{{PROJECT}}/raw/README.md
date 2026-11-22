@@ -17,6 +17,8 @@ Or drag a PDF or paste markdown by hand. Anything readable works.
 
 Tell the agent: `ingest raw/<filename>`.
 
+A finished example already lives here: `EXAMPLE-compiled-wiki-vs-rag.md` (and matching wiki pages). Use it as the pattern; delete it when you have real sources.
+
 ## Rules
 
 - Never edit a file here to fix a mistake — note the correction in the wiki page

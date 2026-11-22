@@ -7,9 +7,13 @@ Hindsight and Obsidian are complementary. Don’t duplicate.
 
 If Hindsight isn’t set up: `pip install hindsight-cursor` && `hindsight-cursor init` — official plugin only. Docs: https://hindsight.vectorize.io/sdks/integrations/cursor
 
+## Routing (one line)
+
+Agenda / working set → `wiki/hot.md`. Sticky agent facts (prefs, decisions, corrections) → Hindsight. Durable knowledge → wiki.
+
 ## Hindsight
 
-Short facts across sessions (hooks + MCP): decisions, prefs, project context, corrections.
+Short facts across sessions (hooks + MCP): decisions, prefs, project context, corrections. Associative recall / consolidation / inceptions — not a second wiki.
 
 - `sessionStart` → recall
 - `stop` / `sessionEnd` → retain
@@ -21,9 +25,12 @@ Config: `~/.hindsight/cursor.json`. Daemon: `http://127.0.0.1:9077`, bank `curso
 
 Long notes under `obsidian/{{PROJECT}}/`. Follow `AGENTS.md`.
 
+`hot.md` is the vault’s current focus (now / next / open threads). Rewrite it; don’t treat it as memory.
+
 ## Rules of thumb
 
-- No full wiki pages into Hindsight
+- No full wiki pages into Hindsight retain
 - No rewriting the vault from memories
-- Research → wiki; prefs/decisions → Hindsight
+- Research → wiki; prefs/decisions → Hindsight; agenda → `hot.md`
 - Topic switch: `recall`, then `wiki/index.md` / search
+- Wiki vs Hindsight conflict: cite both; don’t silently pick a side; file durable conflicts on the wiki page with `> [!contradiction]`

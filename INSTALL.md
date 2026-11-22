@@ -99,18 +99,18 @@ Use `--force` only when intentionally replacing an existing Hindsight install. U
 
 **Fully quit and reopen Cursor** after init — plugins load at startup.
 
-### 4b. User-global + daemon profile (recommended stack)
+### 4b. User-global + daemon profile (optional example stack)
 
 `~/.hindsight/cursor.json` is **user-global**. Keep missions **domain-agnostic**. Merge missing keys; do not wipe a working config.
 
-**Model split (via [OpenRouter](https://openrouter.ai)):**
+The model split below is **not required** — it is one stack that has worked for us on [OpenRouter](https://openrouter.ai). Use any providers/models you prefer. Ids go stale; pin current SKUs.
 
-| Role | Model |
+| Role | Example |
 |---|---|
-| Cursor / coding | **Qwen** (picker) |
-| Retain / default Hindsight LLM | **Qwen** flash |
-| Consolidation LLM | **GLM** 5.3 flash |
-| Consolidation decisions | **Jev** (`typesafe/jev-1.14`) |
+| Cursor / coding | Qwen (picker) |
+| Retain / default Hindsight LLM | Qwen flash |
+| Consolidation LLM | GLM 5.3 flash |
+| Consolidation decisions | Jev (`typesafe/jev-1.14`) |
 | Embeddings | e.g. Perplexity embed |
 | Recall rerank | `rrf` (Jev **off** for recall) |
 
@@ -118,7 +118,7 @@ Use `--force` only when intentionally replacing an existing Hindsight install. U
 export OPENROUTER_API_KEY="…"
 ```
 
-**Recommended `~/.hindsight/cursor.json`** (retain stays on Qwen):
+**Example `~/.hindsight/cursor.json`** (optional; retain on Qwen in this sample):
 
 ```json
 {
@@ -146,7 +146,7 @@ export OPENROUTER_API_KEY="…"
 
 Replace model ids with **current** OpenRouter SKUs when they move.
 
-**Recommended daemon profile env** (`hindsight-embed` profile `cursor` — set via `uvx hindsight-embed profile set-env …` or edit `~/.hindsight/profiles/cursor.env`, then restart the daemon). Keys shown as `***`:
+**Example daemon profile env** (`hindsight-embed` profile `cursor` — set via `uvx hindsight-embed profile set-env …` or edit `~/.hindsight/profiles/cursor.env`, then restart the daemon). Keys shown as `***`:
 
 ```json
 {

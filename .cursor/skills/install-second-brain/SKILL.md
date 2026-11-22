@@ -58,10 +58,10 @@ Follow `INSTALL.md`. Use official Obsidian / `hindsight-cursor` — don’t copy
    Prefer local daemon (no `--api-url`) unless user asks for cloud/self-hosted.
 2. Merge into `~/.hindsight/cursor.json` (user-global; create if missing) without wiping existing keys — follow `INSTALL.md` §4b:
    - `useLocalDaemon: true`, empty `hindsightApiUrl`, `apiPort: 9077`, agnostic missions
-   - Retain LLM: **Qwen** (`llmProvider: "openrouter"`, `llmModel: "qwen/qwen3.7-flash"` or current Qwen flash, `llmApiKeyEnv: "OPENROUTER_API_KEY"`)
-3. Apply daemon profile env from `examples/hindsight-profile.env.example` / `INSTALL.md` §4b (consolidation **GLM** + **Jev**, embeddings, `rrf` rerank; Jev off for recall). Restart daemon.
+   - Wire retain LLM to whatever provider/model the user prefers (OpenRouter + Qwen flash is one optional example in `INSTALL.md` §4b — not required)
+3. Optionally apply daemon profile env from `examples/hindsight-profile.env.example` / `INSTALL.md` §4b if the user wants that stack (consolidation GLM + Jev, embeddings, `rrf` rerank; Jev off for recall). Otherwise keep their existing providers. Restart daemon after env changes.
 4. Probe `curl -sf http://127.0.0.1:9077/health`. If down: ensure `uv`/`uvx` + API key; allow plugin auto-start or run official embed start commands from `INSTALL.md` §4c.
-5. Remind user to **fully quit and reopen Cursor**. Cursor/coding model: **Qwen** in the picker.
+5. Remind user to **fully quit and reopen Cursor**. Coding model in the picker is their choice (Qwen is only an example).
 
 ### 4. Verify + handoff
 

@@ -15,6 +15,6 @@ Optional status board. Keep thin — this is not a second index.
 
 | Signal | Status |
 |---|---|
-| Sources ingested | 0 |
+| Sources ingested | 1 (EXAMPLE seed) |
 | Open questions | — |
 | Last lint | — |

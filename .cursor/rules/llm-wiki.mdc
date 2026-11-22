@@ -25,7 +25,7 @@ Vault root: `obsidian/{{PROJECT}}/`. Wikilinks are vault-absolute by filename.
 
 ## Operations
 
-- **"ingest `<file>`"** — read source → discuss takeaways → write `wiki/sources/` page → update affected concept/entity pages (typically 10–15) → update `index.md` + `hot.md` → append `log.md`. Never silently overwrite a conflicting claim; leave a `> [!contradiction]` callout.
+- **"ingest `<file>`"** — read source → discuss takeaways → write `wiki/sources/` page → update only clearly affected concept/entity pages → update `index.md` + `hot.md` → append `log.md`. If more than ~5 existing pages would change, propose the list and ask first. Never silently overwrite a conflicting claim; leave a `> [!contradiction]` callout.
 - **Query / "what do I know about X"** — read `index.md` first; if ambiguous run `python3 tools/wiki-search.py "<terms>"`; answer with `[[citations]]`; file durable answers into `wiki/comparisons/` or `wiki/analyses/` and index them. Record gaps in `log.md`.
 - **"lint the wiki"** — run `python3 tools/wiki-lint.py`, then judgment checks (contradictions, staleness, missing pages); file findings to `wiki/analyses/Lint YYYY-MM-DD.md`.
 
@@ -33,7 +33,7 @@ Vault root: `obsidian/{{PROJECT}}/`. Wikilinks are vault-absolute by filename.
 
 - Every new page gets an `index.md` row in the same pass.
 - Every edit bumps `updated` in frontmatter.
-- Frontmatter contract: `type` ∈ {source,concept,entity,comparison,analysis,slide,overview}; `status` ∈ {stub,draft,stable}; `confidence` ∈ {low,medium,high}; `sources: []` of wikilinks.
+- Frontmatter contract: `type` ∈ {source,concept,entity,comparison,analysis,overview}; `status` ∈ {stub,draft,stable}; `confidence` ∈ {low,medium,high}; `sources: []` of wikilinks.
 - Use `[[Wikilinks]]` inside the vault; real URLs only for external links.
 - Citation chains terminate in `raw/` via a `sources/` page.
 - Prefer filing knowledge into the wiki over leaving it in chat.

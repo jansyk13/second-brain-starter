@@ -29,9 +29,9 @@ Working language: English (domain abbreviations OK). Frontmatter keys stay Engli
 | **Hindsight** | Short cross-session memory (official `hindsight-cursor`) |
 | **Cursor** | Agent; hooks/MCP from official init |
 
-Don’t paste whole wiki pages into Hindsight. Don’t rebuild the vault from memory snippets. Long writeups → wiki; decisions/prefs → Hindsight.
+**Routing:** agenda / working set → `wiki/hot.md`; sticky agent facts (prefs, decisions, corrections) → Hindsight; durable knowledge → wiki. Never paste full wiki pages into retain; never rebuild the vault from recall.
 
-Session start: `wiki/hot.md`, then `wiki/index.md`. Topic switch: `recall`, then index/search.
+Session start: `wiki/hot.md`, then `wiki/index.md`. Topic switch: `recall`, then index/search. If wiki and Hindsight disagree, cite both — do not silently pick a side; file durable conflicts on the wiki page with `> [!contradiction]`.
 
 ---
 
@@ -52,7 +52,7 @@ repo/
         ├── hot.md                 # ~500 words current context
         ├── overview.md
         ├── dashboard.md
-        ├── sources/ concepts/ entities/ comparisons/ analyses/ slides/ templates/
+        ├── sources/ concepts/ entities/ comparisons/ analyses/ templates/
 ```
 
 | Layer | Path | Rule |
@@ -69,7 +69,7 @@ Required on every wiki page except `index.md`, `log.md`, `hot.md`, `dashboard.md
 
 ```yaml
 ---
-type: concept            # source | concept | entity | comparison | analysis | slide | overview
+type: concept            # source | concept | entity | comparison | analysis | overview
 title: Example
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
@@ -90,7 +90,7 @@ Do not invent new `type` / `status` values without proposing in `log.md` and wai
 
 | Phrase | Action |
 |---|---|
-| **ingest `<file>`** | Read `raw/` source → discuss takeaways (unless batch) → write `wiki/sources/` page → update ~10–15 affected pages → `index.md` + `hot.md` → append `log.md` → bump `updated`. |
+| **ingest `<file>`** | Read `raw/` source → discuss takeaways (unless batch) → write `wiki/sources/` page → update only clearly affected concept/entity pages → `index.md` + `hot.md` → append `log.md` → bump `updated`. If more than ~5 existing pages would change, propose the list and ask before writing. |
 | **query / what do I know about X** | Read `index.md` → optional `python3 tools/wiki-search.py "<terms>"` → answer with `[[citations]]` → file durable answers to `comparisons/` or `analyses/` → log gaps. |
 | **lint the wiki** | `python3 tools/wiki-lint.py` + judgment (contradictions, staleness, missing pages, gaps) → file `wiki/analyses/Lint YYYY-MM-DD.md` → fix mechanical issues; ask before resolving substantive contradictions. |
 

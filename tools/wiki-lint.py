@@ -23,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = Path(__file__).resolve().parent / "wiki-config.json"
 
-VALID_TYPES = {"source", "concept", "entity", "comparison", "analysis", "slide", "overview"}
+VALID_TYPES = {"source", "concept", "entity", "comparison", "analysis", "overview"}
 VALID_STATUS = {"stub", "draft", "stable"}
 VALID_CONFIDENCE = {"low", "medium", "high"}
 META_PAGES = {"index", "log", "hot", "dashboard"}
@@ -153,7 +153,7 @@ def main() -> int:
                 Finding("warn", "stale", rel, f"updated {(today - updated).days}d ago")
             )
 
-        if not is_meta and ptype not in ("source", "slide"):
+        if not is_meta and ptype != "source":
             srcs = fm.get("sources", "")
             if srcs in ("", "[]"):
                 if conf != "low":

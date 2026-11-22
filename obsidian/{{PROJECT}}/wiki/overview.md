@@ -13,7 +13,7 @@ tags: [meta]
 
 Rewrite this after install. One paragraph on what {{PROJECT}} is for.
 
-Human drops stuff in `raw/`. Agent maintains `wiki/`. Hindsight keeps short residue, not full notes.
+Human drops stuff in `raw/`. Agent maintains `wiki/`. Hindsight keeps short sticky residue (not full notes). `hot.md` is the current agenda. See the EXAMPLE ingest under Sources in [[Index]].
 
 ## Scope
 

@@ -11,19 +11,19 @@ tags: [meta]
 
 # Hot
 
-Read at session start. Rewrite the whole page — don’t append. Cap ~500 words.
+Read at session start. Rewrite the whole page — don’t append. Cap ~500 words. Agenda only — not Hindsight memory.
 
 ## Now
 
 - Fresh install for **{{PROJECT}}**
+- Golden ingest already on disk: [[Compiled Wiki vs RAG]] (see `raw/EXAMPLE-compiled-wiki-vs-rag.md`)
 - Fill identity in `AGENTS.md`
-- Put sources in `raw/`, then `ingest raw/<file>`
 
 ## Next
 
 1. Decide what belongs in this vault
-2. Ingest one real source
-3. Keep [[Index]] honest
+2. Drop a real source in `raw/`, then `ingest raw/<file>`
+3. Keep [[Index]] honest; delete the EXAMPLE raw+wiki pages when they no longer help
 
 ## Open threads
 

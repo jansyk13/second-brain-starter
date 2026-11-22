@@ -7,7 +7,8 @@ MIT — see [LICENSE](LICENSE).
 ## What’s in the box
 
 - Obsidian vault scaffold: `raw/` (you own it, immutable) and `wiki/` (agent-owned)
-- Two Cursor rules: wiki ops, and Hindsight vs Obsidian boundaries
+- Golden ingest example in the vault (`EXAMPLE-compiled-wiki-vs-rag` → source + concepts)
+- Two Cursor rules: wiki ops, and Hindsight vs Obsidian boundaries (agenda → `hot`; sticky facts → Hindsight; knowledge → wiki)
 - `wiki-lint` / `wiki-search` (vault path in `tools/wiki-config.json`)
 - Install skill + [`INSTALL.md`](INSTALL.md) — skill stays in this repo; it is not copied into targets
 
@@ -31,11 +32,11 @@ git clone https://github.com/jansyk13/second-brain-starter.git
 
 Or do it by hand with [`INSTALL.md`](INSTALL.md).
 
-## Models (OpenRouter)
+## Optional: Hindsight model profile
 
-Ids change — pin whatever is current. The split we use:
+Not part of the product — just a stack that has worked for us on OpenRouter. Model ids go stale; pin current SKUs. Use any providers you prefer.
 
-| Role | Prefer | Where |
+| Role | Example we use | Where |
 |---|---|---|
 | Cursor / coding | Qwen | Cursor model picker |
 | Hindsight retain | Qwen flash (e.g. `qwen/qwen3.7-flash`) | `~/.hindsight/cursor.json` + daemon `HINDSIGHT_API_LLM_*` |
@@ -44,11 +45,11 @@ Ids change — pin whatever is current. The split we use:
 | Embeddings | e.g. `perplexity/pplx-embed-v1-0.6b` | daemon `HINDSIGHT_API_EMBEDDINGS_*` |
 | Recall rerank | `rrf` (don’t use Jev for recall) | `HINDSIGHT_API_RERANKER_PROVIDER=rrf`, `RECALL_DECISION_MODEL_PROVIDER=none` |
 
-Copy-paste configs: [`INSTALL.md`](INSTALL.md) §4b and [`examples/hindsight-profile.env.example`](examples/hindsight-profile.env.example).
+Copy-paste: [`INSTALL.md`](INSTALL.md) §4b and [`examples/hindsight-profile.env.example`](examples/hindsight-profile.env.example).
 
 ## Needs
 
 - Cursor, Python 3
 - Obsidian + `hindsight-cursor` (see above)
 - Local Hindsight daemon on `http://127.0.0.1:9077` unless you use cloud
-- OpenRouter key for the model stack above
+- LLM API access for Hindsight (OpenRouter or otherwise) if you run the local daemon
