@@ -1,12 +1,12 @@
 # LLM Wiki — Agent Contract
 
-Installed via **Second Brain Starter** (Cursor + Obsidian LLM Wiki + official Hindsight).
+Brought in by Second Brain Starter.
 
-This repository uses a **Karpathy-style LLM Wiki**: Obsidian is the IDE; the agent maintains `wiki/`; the human curates `raw/` and asks questions.
+Karpathy-style LLM Wiki: you curate `raw/`, the agent maintains `wiki/`, Obsidian is the editor.
 
-> Fill in **Project identity** after install. Keep the wiki schema stable unless the human approves a change.
+> Fill in Project identity after install. Don’t change the schema below without explicit approval.
 
-**Working language:** English for wiki page bodies (known domain abbreviations OK). Frontmatter keys stay English. Do not rewrite Hindsight memory content.
+Working language: English (domain abbreviations OK). Frontmatter keys stay English. Don’t dump Hindsight memories back into the vault as if they were sources.
 
 ---
 
@@ -25,13 +25,13 @@ This repository uses a **Karpathy-style LLM Wiki**: Obsidian is the IDE; the age
 
 | System | Role |
 |---|---|
-| **Obsidian** (`obsidian/{{PROJECT}}/`) | Durable documents — research, notes, playbooks, reference |
-| **Hindsight** | Ambient cross-session memory — decisions, preferences, residue (official `hindsight-cursor` plugin) |
-| **Cursor** | Agent execution — rules, skills; Hindsight hooks/MCP via official init |
+| **Obsidian** (`obsidian/{{PROJECT}}/`) | Long-form notes, research, playbooks |
+| **Hindsight** | Short cross-session memory (official `hindsight-cursor`) |
+| **Cursor** | Agent; hooks/MCP from official init |
 
-**Boundaries:** Do not dump the vault into Hindsight. Do not rewrite the vault from Hindsight. Prefer filing long-form knowledge into the wiki; keep short durable residue in Hindsight.
+Don’t paste whole wiki pages into Hindsight. Don’t rebuild the vault from memory snippets. Long writeups → wiki; decisions/prefs → Hindsight.
 
-**Start session:** read `obsidian/{{PROJECT}}/wiki/hot.md`, then `wiki/index.md`. On topic switch: Hindsight `recall`, then wiki index / search.
+Session start: `wiki/hot.md`, then `wiki/index.md`. Topic switch: `recall`, then index/search.
 
 ---
 

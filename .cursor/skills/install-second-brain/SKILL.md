@@ -13,7 +13,7 @@ description: >-
 
 User opens a clone of **second-brain-starter** as the Cursor workspace (or points at it) and asks to install into a **target repository**.
 
-Follow `INSTALL.md` in the kit. **Favour official setups** — do not vendor or hand-copy Hindsight plugin/hooks/MCP from this kit. Do **not** copy this skill into the target; it stays in the kit only.
+Follow `INSTALL.md`. Use official Obsidian / `hindsight-cursor` — don’t copy or vendor Hindsight plugin/hooks/MCP from this kit. Don’t copy this skill into the target.
 
 | Piece | How |
 |---|---|
@@ -74,6 +74,6 @@ Follow `INSTALL.md` in the kit. **Favour official setups** — do not vendor or 
 
 ## Done when
 
-- Vault exists, Obsidian can open it, lint is clean
-- Hindsight installed via **official** `hindsight-cursor init` (not a vendored copy)
-- Local health check passes at `http://127.0.0.1:9077` (unless user chose cloud)
+- Vault opens in Obsidian; `wiki-lint` is clean
+- `hindsight-cursor init` ran in the target (not a vendored plugin)
+- `curl -sf http://127.0.0.1:9077/health` works (unless cloud)

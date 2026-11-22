@@ -1,10 +1,8 @@
 # CLAUDE.md
 
-This repository is an **LLM-maintained personal knowledge base** (Karpathy LLM Wiki pattern) with **Hindsight** ambient memory.
+LLM Wiki + Hindsight. Read `AGENTS.md` first — schema, linking, ingest/query/lint. This file is just a pointer.
 
-**Read `AGENTS.md` first.** It is the schema: layout, frontmatter contract, linking, ingest / query / lint. This file is only a pointer.
-
-**Working language:** English (known domain abbreviations OK).
+Language: English (abbreviations OK).
 
 ## Quick orientation
 

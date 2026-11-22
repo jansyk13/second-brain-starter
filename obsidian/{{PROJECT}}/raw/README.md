@@ -1,8 +1,6 @@
 # raw/ — immutable sources
 
-Your curated collection of source documents: articles, papers, transcripts, data
-files, images. **The agent reads from this folder and never modifies it.** This is
-the source of truth.
+Articles, papers, transcripts, dumps, images. You put them here. The agent reads; it never edits this folder.
 
 ## Getting sources in
 

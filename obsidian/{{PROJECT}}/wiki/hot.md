@@ -11,22 +11,20 @@ tags: [meta]
 
 # Hot
 
-Current working context. **Read first at session start.** Rewrite — never append. Keep under ~500 words.
-
-**Language:** English.
+Read at session start. Rewrite the whole page — don’t append. Cap ~500 words.
 
 ## Now
 
-- Second Brain Starter installed for **{{PROJECT}}**.
-- Fill Project identity in `AGENTS.md`.
-- Drop sources into `raw/` and say `ingest raw/<file>`.
+- Fresh install for **{{PROJECT}}**
+- Fill identity in `AGENTS.md`
+- Put sources in `raw/`, then `ingest raw/<file>`
 
 ## Next
 
-1. Clarify the purpose of this vault
-2. Ingest the first source
-3. Keep [[Index]] and this page current
+1. Decide what belongs in this vault
+2. Ingest one real source
+3. Keep [[Index]] honest
 
 ## Open threads
 
-- _None yet_
+- _

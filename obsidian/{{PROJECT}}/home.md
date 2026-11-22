@@ -11,15 +11,15 @@ tags: [meta]
 
 # Home
 
-Welcome to the **{{PROJECT}}** second brain (LLM Wiki).
+{{PROJECT}} wiki. Start here:
 
-| Start here | Why |
+| Page | What it is |
 |---|---|
-| [[Hot]] | Current working context (~500 words) |
-| [[Index]] | Catalog of every wiki page |
+| [[Hot]] | Working context (~500 words) — rewrite each session |
+| [[Index]] | Catalog of pages |
 | [[Overview]] | What this vault is for |
-| [[Dashboard]] | Optional status board |
+| [[Dashboard]] | Optional status scrap |
 
-**Layers:** `raw/` is human-owned and immutable. `wiki/` is agent-maintained. Schema lives in repo-root `AGENTS.md`.
+`raw/` = your sources (don’t let the agent edit). `wiki/` = compiled notes. Rules live in repo-root `AGENTS.md`.
 
-**Memory:** Hindsight holds short decisions and preferences; this vault holds durable documents.
+Hindsight = short memory across chats. This vault = durable docs.

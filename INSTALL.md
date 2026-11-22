@@ -1,9 +1,10 @@
 # Install Second Brain Starter
 
-Use this checklist in a **target repository**. Prefer the Cursor skill `.cursor/skills/install-second-brain/SKILL.md` when an agent drives the install (open **this kit** as the Cursor workspace, then pass the target path — the skill is not copied into the target).
+Checklist for installing into a **target repo**. If an agent does it: open **this** repo in Cursor (skill `install-second-brain`), then give it the target path. The skill is not copied into the target.
 
-**Kit root:** the clone of this repository (the directory that contains this file). The vault template folder is literally `obsidian/{{PROJECT}}/` until renamed.
-**Principle:** Prefer **official** apps and plugins. This kit only ships the LLM wiki scaffold + thin Cursor rules; it does **not** vendor Hindsight.
+Kit root = this clone. Vault template folder is literally `obsidian/{{PROJECT}}/` until renamed.
+
+Use official Obsidian and `hindsight-cursor`. This kit only ships the wiki scaffold and a couple of rules — it does not vendor Hindsight.
 
 | Piece | Official source |
 |---|---|
@@ -77,7 +78,7 @@ Do **not** open the repo root as the vault.
 
 ## 4. Hindsight (official Cursor plugin)
 
-Follow the [official Cursor integration](https://hindsight.vectorize.io/sdks/integrations/cursor). Prefer **local daemon** on port **9077** for this pack’s MCP expectations.
+Follow the [official Cursor integration](https://hindsight.vectorize.io/sdks/integrations/cursor). Local daemon on port 9077 is what we assume for MCP.
 
 ### 4a. Install + init in the target repo
 
@@ -87,7 +88,7 @@ cd /path/to/target-repo
 hindsight-cursor init          # local / auto-daemon path — do NOT pass --api-url unless using cloud/self-hosted
 ```
 
-What official `init` does (do not hand-roll these):
+What `init` sets up (don’t hand-roll):
 
 - Copies plugin into `.cursor-plugin/hindsight-memory/`
 - Merges Hindsight entries into `.cursor/hooks.json`

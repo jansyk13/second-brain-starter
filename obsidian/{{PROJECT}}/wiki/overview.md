@@ -11,17 +11,17 @@ tags: [meta]
 
 # Overview
 
-What this vault is for — rewrite after install.
+Rewrite this after install. One paragraph on what {{PROJECT}} is for.
 
-**{{PROJECT}}** uses a Karpathy-style LLM Wiki: human curates `raw/`, agent maintains `wiki/`, Hindsight keeps short cross-session residue.
+Human drops stuff in `raw/`. Agent maintains `wiki/`. Hindsight keeps short residue, not full notes.
 
 ## Scope
 
-_Describe the domain and what belongs here vs elsewhere._
+_What’s in vs out._
 
-## How to work
+## Loop
 
-1. Clip or drop sources into `raw/`
-2. Ask the agent to `ingest` them
-3. Query with “what do I know about X”
-4. Periodically `lint the wiki`
+1. Clip/drop into `raw/`
+2. `ingest …`
+3. Ask “what do I know about X”
+4. `lint the wiki` when it gets messy
