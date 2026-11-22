@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Local vault path (written at install); example file is tracked
+tools/wiki-config.json
+
+# Obsidian — workspace layout is personal; settings are tracked
+obsidian/*/.obsidian/workspace.json
+obsidian/*/.obsidian/workspace-mobile.json
+obsidian/*/.obsidian/cache
+obsidian/*/.trash/
+obsidian/*/.obsidian/plugins/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
+.idea/
+
+# Hindsight generated session injection
+.cursor/rules/hindsight-session.mdc

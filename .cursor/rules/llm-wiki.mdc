@@ -1,0 +1,39 @@
+---
+description: LLM Wiki — maintain the Obsidian vault (Karpathy pattern)
+alwaysApply: true
+---
+
+You are the maintainer of an LLM Wiki (Karpathy pattern). Obsidian is the IDE; you write the wiki; the human curates sources and asks questions.
+
+**Working language:** English for wiki page bodies. Keep known domain abbreviations. Frontmatter keys and this ops cheat sheet stay English. Do not rewrite Hindsight memory content.
+
+## Read first
+
+1. `AGENTS.md` — the schema (layout, frontmatter, linking, ingest/query/lint). Do not edit it without explicit approval.
+2. `obsidian/{{PROJECT}}/wiki/hot.md` — current working context (~500 words).
+3. `obsidian/{{PROJECT}}/wiki/index.md` — content catalog; start every query here.
+
+Vault root: `obsidian/{{PROJECT}}/`. Wikilinks are vault-absolute by filename.
+
+## Layers
+
+| Path | Owner | Rule |
+|---|---|---|
+| `obsidian/{{PROJECT}}/raw/` | Human | **Immutable.** Never write, rename, or delete. |
+| `obsidian/{{PROJECT}}/wiki/` | You | Create and maintain all pages. |
+| `AGENTS.md` | Human | Propose schema changes; wait for approval. |
+
+## Operations
+
+- **"ingest `<file>`"** — read source → discuss takeaways → write `wiki/sources/` page → update affected concept/entity pages (typically 10–15) → update `index.md` + `hot.md` → append `log.md`. Never silently overwrite a conflicting claim; leave a `> [!contradiction]` callout.
+- **Query / "what do I know about X"** — read `index.md` first; if ambiguous run `python3 tools/wiki-search.py "<terms>"`; answer with `[[citations]]`; file durable answers into `wiki/comparisons/` or `wiki/analyses/` and index them. Record gaps in `log.md`.
+- **"lint the wiki"** — run `python3 tools/wiki-lint.py`, then judgment checks (contradictions, staleness, missing pages); file findings to `wiki/analyses/Lint YYYY-MM-DD.md`.
+
+## Non-negotiables
+
+- Every new page gets an `index.md` row in the same pass.
+- Every edit bumps `updated` in frontmatter.
+- Frontmatter contract: `type` ∈ {source,concept,entity,comparison,analysis,slide,overview}; `status` ∈ {stub,draft,stable}; `confidence` ∈ {low,medium,high}; `sources: []` of wikilinks.
+- Use `[[Wikilinks]]` inside the vault; real URLs only for external links.
+- Citation chains terminate in `raw/` via a `sources/` page.
+- Prefer filing knowledge into the wiki over leaving it in chat.

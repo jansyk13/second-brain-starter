@@ -1,0 +1,23 @@
+{
+  "attachmentFolderPath": "raw/assets",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "wiki",
+  "alwaysUpdateLinks": true,
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "showUnsupportedFiles": true,
+  "trashOption": "local",
+  "promptDelete": false,
+  "readableLineLength": true,
+  "strictLineBreaks": false,
+  "showFrontmatter": true,
+  "propertiesInDocument": "visible",
+  "defaultViewMode": "preview",
+  "livePreview": true,
+  "showLineNumber": false,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showIndentGuide": false,
+  "smartIndentList": true,
+  "vimMode": false
+}

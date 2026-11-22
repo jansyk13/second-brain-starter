@@ -1,0 +1,42 @@
+---
+description: Hindsight ambient memory vs Obsidian durable documents — boundaries
+alwaysApply: true
+---
+
+Treat Hindsight and Obsidian as complementary, not duplicates.
+
+If Hindsight is missing, install the **official** Cursor plugin (`pip install hindsight-cursor` && `hindsight-cursor init`) — do not hand-roll or vendor a fork. See [Hindsight Cursor docs](https://hindsight.vectorize.io/sdks/integrations/cursor).
+
+## Hindsight (automatic ambient memory)
+
+Stores short durable facts across sessions via official hooks + MCP:
+
+- Decisions and rationale
+- Working preferences
+- Project context
+- Important discoveries
+- Topic relationships
+- Corrections / superseded assumptions
+
+Hooks (no manual commands needed):
+
+- `sessionStart` → auto-recall into context
+- `stop` / `sessionEnd` → auto-retain
+
+MCP tools (`recall`, `retain`, `reflect`) are for mid-session use when switching topics or researching something new — call them when relevant, not on every trivial turn.
+
+Config: `~/.hindsight/cursor.json`. Local daemon: `http://127.0.0.1:9077`, bank `cursor`.
+
+## Obsidian wiki (durable documents)
+
+Owns long-form, citable knowledge under `obsidian/{{PROJECT}}/`:
+
+- Research, playbooks, meeting notes, reference material
+- Follow `AGENTS.md` for ingest/query/lint
+
+## Boundaries
+
+- Do NOT copy full Obsidian pages into Hindsight.
+- Do NOT rewrite the vault from Hindsight memories.
+- Prefer filing detailed research into the wiki; let Hindsight keep the working residue (preferences, decisions, open threads).
+- When topic-switching or starting deep research: use Hindsight `recall` for prior decisions/preferences, then read `wiki/index.md` / search the vault for documents.

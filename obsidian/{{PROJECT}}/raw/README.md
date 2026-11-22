@@ -1,0 +1,35 @@
+# raw/ — immutable sources
+
+Your curated collection of source documents: articles, papers, transcripts, data
+files, images. **The agent reads from this folder and never modifies it.** This is
+the source of truth.
+
+## Getting sources in
+
+The fast path is [Obsidian Web Clipper](https://obsidian.md/clipper) — it turns a
+web article into markdown and drops it here.
+
+1. Install the Clipper browser extension.
+2. Point it at this vault, folder `raw/`.
+3. Clip an article. Download attachments so images land in `raw/assets/`.
+
+Or drag a PDF or paste markdown by hand. Anything readable works.
+
+## Then what
+
+Tell the agent: `ingest raw/<filename>`.
+
+## Rules
+
+- Never edit a file here to fix a mistake — note the correction in the wiki page
+  that cites it, so the discrepancy stays visible.
+- Never delete a source the wiki cites. Move it to `raw/archive/` if you must.
+- Filenames become source page titles. Descriptive is better than short.
+
+## Layout
+
+```
+raw/
+├── assets/     # images and attachments
+└── *.md        # clipped articles and pasted text
+```
