@@ -98,13 +98,26 @@ Use `--force` only when intentionally replacing an existing Hindsight install. U
 
 **Fully quit and reopen Cursor** after init — plugins load at startup.
 
-### 4b. User-global config (`~/.hindsight/cursor.json`)
+### 4b. User-global + daemon profile (recommended stack)
 
-This file is **user-global** (all Cursor projects). Keep missions **domain-agnostic** — never name a company, vault folder, or repo.
+`~/.hindsight/cursor.json` is **user-global**. Keep missions **domain-agnostic**. Merge missing keys; do not wipe a working config.
 
-If the file already exists, **merge** missing keys; do not wipe a working config. If `bankMission` names a specific vault, generalize it.
+**Model split (via [OpenRouter](https://openrouter.ai)):**
 
-**Recommended local-daemon + GLM extract** (after or instead of a bare init default):
+| Role | Model |
+|---|---|
+| Cursor / coding | **Qwen** (picker) |
+| Retain / default Hindsight LLM | **Qwen** flash |
+| Consolidation LLM | **GLM** 5.3 flash |
+| Consolidation decisions | **Jev** (`typesafe/jev-1.14`) |
+| Embeddings | e.g. Perplexity embed |
+| Recall rerank | `rrf` (Jev **off** for recall) |
+
+```bash
+export OPENROUTER_API_KEY="…"
+```
+
+**Recommended `~/.hindsight/cursor.json`** (retain stays on Qwen):
 
 ```json
 {
@@ -117,25 +130,60 @@ If the file already exists, **merge** missing keys; do not wipe a working config
   "retainMission": "Extract decisions and their rationale, working preferences, project/context facts, important discoveries, relationships between topics, and corrections that supersede earlier assumptions. Ignore greetings, transient tool noise, and verbatim Obsidian page content.",
   "autoRecall": true,
   "autoRetain": true,
+  "retainMode": "chunked",
+  "retainEveryNTurns": 5,
+  "retainOverlapTurns": 1,
+  "retainToolCalls": false,
+  "recallBudget": "mid",
+  "recallMaxTokens": 1536,
   "llmProvider": "openrouter",
-  "llmModel": "z-ai/glm-4.5-flash",
-  "llmApiKeyEnv": "OPENROUTER_API_KEY"
+  "llmModel": "qwen/qwen3.7-flash",
+  "llmApiKeyEnv": "OPENROUTER_API_KEY",
+  "daemonIdleTimeout": 600
 }
 ```
 
-Replace `llmModel` with a **current** OpenRouter GLM id (flash preferred for extract). Example ids go stale.
+Replace model ids with **current** OpenRouter SKUs when they move.
 
-**Recommended model stack** (via [OpenRouter](https://openrouter.ai)) — **Qwen + GLM + Jev**:
+**Recommended daemon profile env** (`hindsight-embed` profile `cursor` — set via `uvx hindsight-embed profile set-env …` or edit `~/.hindsight/profiles/cursor.env`, then restart the daemon). Keys shown as `***`:
 
-| Role | Prefer | Where |
-|---|---|---|
-| Cursor / coding | **Qwen** | Cursor model picker |
-| Hindsight extract | **GLM** (z.ai), e.g. current `z-ai/glm-*-flash` | `~/.hindsight/cursor.json` → `llmModel` |
-| Routing / typed decisions | **Jev** (TypeSafe) — [`typesafe/jev-*`](https://openrouter.ai/docs/guides/community/jev) or [`typesafe/jev-router`](https://openrouter.ai/docs/guides/routing/routers/jev-router) | OpenRouter when you want structured routing instead of a fixed chat model |
+```json
+{
+  "HINDSIGHT_API_PORT": "9077",
+  "HINDSIGHT_EMBED_DAEMON_IDLE_TIMEOUT": "600",
 
-```bash
-export OPENROUTER_API_KEY="…"
+  "HINDSIGHT_API_LLM_PROVIDER": "openrouter",
+  "HINDSIGHT_API_LLM_MODEL": "qwen/qwen3.7-flash",
+  "HINDSIGHT_API_LLM_API_KEY": "***",
+  "HINDSIGHT_API_LLM_REASONING_EFFORT": "none",
+  "HINDSIGHT_API_LLM_EXTRA_BODY": "{\"reasoning\":{\"effort\":\"none\",\"enabled\":false}}",
+  "HINDSIGHT_API_RETAIN_LLM_REASONING_EFFORT": "none",
+  "HINDSIGHT_API_RETAIN_LLM_EXTRA_BODY": "{\"reasoning\":{\"effort\":\"none\",\"enabled\":false}}",
+
+  "HINDSIGHT_API_CONSOLIDATION_LLM_PROVIDER": "openrouter",
+  "HINDSIGHT_API_CONSOLIDATION_LLM_MODEL": "z-ai/glm-5.3-flash",
+  "HINDSIGHT_API_CONSOLIDATION_LLM_API_KEY": "***",
+  "HINDSIGHT_API_CONSOLIDATION_LLM_REASONING_EFFORT": "high",
+  "HINDSIGHT_API_CONSOLIDATION_LLM_EXTRA_BODY": "{\"reasoning\":{\"effort\":\"high\",\"enabled\":true}}",
+  "HINDSIGHT_API_CONSOLIDATION_USE_DECISION_MODEL": "true",
+
+  "HINDSIGHT_API_DECISION_MODEL_PROVIDER": "typesafe",
+  "HINDSIGHT_API_DECISION_MODEL_BASE_URL": "https://openrouter.ai/api",
+  "HINDSIGHT_API_DECISION_MODEL_MODEL": "typesafe/jev-1.14",
+  "HINDSIGHT_API_DECISION_MODEL_API_KEY": "***",
+  "HINDSIGHT_API_DECISION_MODEL_TOKENIZER": "jev",
+  "HINDSIGHT_API_RECALL_DECISION_MODEL_PROVIDER": "none",
+
+  "HINDSIGHT_API_EMBEDDINGS_PROVIDER": "openrouter",
+  "HINDSIGHT_API_EMBEDDINGS_OPENROUTER_MODEL": "perplexity/pplx-embed-v1-0.6b",
+  "HINDSIGHT_API_EMBEDDINGS_OPENROUTER_API_KEY": "***",
+  "HINDSIGHT_API_EMBEDDINGS_LOCAL_FORCE_CPU": "1",
+  "HINDSIGHT_API_RERANKER_PROVIDER": "rrf",
+  "HINDSIGHT_API_RERANKER_LOCAL_FORCE_CPU": "1"
+}
 ```
+
+See also [`examples/hindsight-profile.env.example`](examples/hindsight-profile.env.example).
 
 ### 4c. Daemon health
 

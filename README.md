@@ -33,15 +33,18 @@ Or follow [`INSTALL.md`](INSTALL.md) manually (kit root = this repository). The 
 
 ## Recommended models (OpenRouter)
 
-Default preference for this kit — pin **current** OpenRouter ids (names move fast):
+Pin **current** OpenRouter ids (names move fast). Reference split used by this kit:
 
-| Role | Prefer | Notes |
+| Role | Prefer | Where |
 |---|---|---|
-| **Cursor / coding agent** | **Qwen** | Pick in the Cursor model picker (OpenRouter / Qwen flash or coder SKU) |
-| **Hindsight fact extract** | **GLM** (z.ai) | Set in `~/.hindsight/cursor.json` as `llmModel` (`z-ai/glm-*-flash` preferred) |
-| **Routing / structured decisions** | **Jev** (TypeSafe) | [Jev](https://openrouter.ai/docs/guides/community/jev) / [Jev Router](https://openrouter.ai/docs/guides/routing/routers/jev-router) (`typesafe/jev-*`, `typesafe/jev-router`) when you want typed routing instead of a fixed chat model |
+| **Cursor / coding agent** | **Qwen** | Cursor model picker |
+| **Hindsight retain / default LLM** | **Qwen** flash (e.g. `qwen/qwen3.7-flash`) | `~/.hindsight/cursor.json` → `llmModel` + daemon `HINDSIGHT_API_LLM_*` |
+| **Hindsight consolidation LLM** | **GLM** (z.ai), e.g. `z-ai/glm-5.3-flash` | daemon `HINDSIGHT_API_CONSOLIDATION_LLM_*` |
+| **Consolidation decisions** | **Jev** (TypeSafe), e.g. `typesafe/jev-1.14` | daemon `HINDSIGHT_API_DECISION_MODEL_*` via `https://openrouter.ai/api` |
+| **Embeddings** | e.g. `perplexity/pplx-embed-v1-0.6b` | daemon `HINDSIGHT_API_EMBEDDINGS_*` |
+| **Recall rerank** | `rrf` (keep Jev off for recall) | `HINDSIGHT_API_RERANKER_PROVIDER=rrf`, `HINDSIGHT_API_RECALL_DECISION_MODEL_PROVIDER=none` |
 
-All three via [OpenRouter](https://openrouter.ai) + `OPENROUTER_API_KEY`. Details and example `cursor.json` in [`INSTALL.md`](INSTALL.md) §4b.
+Full `cursor.json` + daemon env example: [`INSTALL.md`](INSTALL.md) §4b.
 
 ## Requirements
 

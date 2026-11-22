@@ -56,15 +56,12 @@ Follow `INSTALL.md` in the kit. **Favour official setups** — do not vendor or 
    hindsight-cursor init
    ```
    Prefer local daemon (no `--api-url`) unless user asks for cloud/self-hosted.
-2. Merge into `~/.hindsight/cursor.json` (user-global; create if missing) without wiping existing keys:
-   - `useLocalDaemon: true`, empty `hindsightApiUrl`, `apiPort: 9077`
-   - Agnostic `bankMission` / `retainMission` (no project/vault names)
-   - Recommend **Qwen + GLM + Jev** via OpenRouter:
-     - Cursor/coding → **Qwen** (model picker)
-     - Hindsight extract → **GLM** (`llmProvider: "openrouter"`, `llmModel` = current `z-ai/glm-*-flash`, `llmApiKeyEnv: "OPENROUTER_API_KEY"`)
-     - Optional routing/decisions → **Jev** / Jev Router (`typesafe/jev-*`, `typesafe/jev-router`)
-3. Probe `curl -sf http://127.0.0.1:9077/health`. If down: ensure `uv`/`uvx` + API key; allow plugin auto-start or run official embed start commands from `INSTALL.md` §4c.
-4. Remind user to **fully quit and reopen Cursor**.
+2. Merge into `~/.hindsight/cursor.json` (user-global; create if missing) without wiping existing keys — follow `INSTALL.md` §4b:
+   - `useLocalDaemon: true`, empty `hindsightApiUrl`, `apiPort: 9077`, agnostic missions
+   - Retain LLM: **Qwen** (`llmProvider: "openrouter"`, `llmModel: "qwen/qwen3.7-flash"` or current Qwen flash, `llmApiKeyEnv: "OPENROUTER_API_KEY"`)
+3. Apply daemon profile env from `examples/hindsight-profile.env.example` / `INSTALL.md` §4b (consolidation **GLM** + **Jev**, embeddings, `rrf` rerank; Jev off for recall). Restart daemon.
+4. Probe `curl -sf http://127.0.0.1:9077/health`. If down: ensure `uv`/`uvx` + API key; allow plugin auto-start or run official embed start commands from `INSTALL.md` §4c.
+5. Remind user to **fully quit and reopen Cursor**. Cursor/coding model: **Qwen** in the picker.
 
 ### 4. Verify + handoff
 
