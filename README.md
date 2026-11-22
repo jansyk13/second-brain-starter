@@ -31,6 +31,18 @@ git clone https://github.com/jansyk13/second-brain-starter.git
 
 Or follow [`INSTALL.md`](INSTALL.md) manually (kit root = this repository). The install skill is **not** copied into the target — only the wiki scaffold and rules are.
 
+## Recommended models (OpenRouter)
+
+Default preference for this kit — pin **current** OpenRouter ids (names move fast):
+
+| Role | Prefer | Notes |
+|---|---|---|
+| **Cursor / coding agent** | **Qwen** | Pick in the Cursor model picker (OpenRouter / Qwen flash or coder SKU) |
+| **Hindsight fact extract** | **GLM** (z.ai) | Set in `~/.hindsight/cursor.json` as `llmModel` (`z-ai/glm-*-flash` preferred) |
+| **Routing / structured decisions** | **Jev** (TypeSafe) | [Jev](https://openrouter.ai/docs/guides/community/jev) / [Jev Router](https://openrouter.ai/docs/guides/routing/routers/jev-router) (`typesafe/jev-*`, `typesafe/jev-router`) when you want typed routing instead of a fixed chat model |
+
+All three via [OpenRouter](https://openrouter.ai) + `OPENROUTER_API_KEY`. Details and example `cursor.json` in [`INSTALL.md`](INSTALL.md) §4b.
+
 ## Requirements
 
 See [`INSTALL.md`](INSTALL.md):
@@ -39,4 +51,4 @@ See [`INSTALL.md`](INSTALL.md):
 - **Obsidian** (official) — open `obsidian/<PROJECT>/` as vault
 - **Hindsight** (official `hindsight-cursor`) — local daemon on `http://127.0.0.1:9077` unless using cloud
 - **Python 3** for wiki tools + `hindsight-cursor`
-- **LLM (recommended):** [OpenRouter](https://openrouter.ai) — **Qwen** for Cursor/coding, **GLM (z.ai)** for Hindsight extract. Pin current OpenRouter model ids in `~/.hindsight/cursor.json` (examples in `INSTALL.md` go stale — replace with today’s GLM flash SKU).
+- **OpenRouter** with **Qwen + GLM + Jev** as above

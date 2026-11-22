@@ -125,10 +125,13 @@ If the file already exists, **merge** missing keys; do not wipe a working config
 
 Replace `llmModel` with a **current** OpenRouter GLM id (flash preferred for extract). Example ids go stale.
 
-**Recommended LLMs** (via [OpenRouter](https://openrouter.ai)):
+**Recommended model stack** (via [OpenRouter](https://openrouter.ai)) — **Qwen + GLM + Jev**:
 
-- **Cursor / coding:** Qwen (pick in the Cursor model picker)
-- **Hindsight extract:** GLM via z.ai on OpenRouter (`z-ai/glm-*-flash` preferred)
+| Role | Prefer | Where |
+|---|---|---|
+| Cursor / coding | **Qwen** | Cursor model picker |
+| Hindsight extract | **GLM** (z.ai), e.g. current `z-ai/glm-*-flash` | `~/.hindsight/cursor.json` → `llmModel` |
+| Routing / typed decisions | **Jev** (TypeSafe) — [`typesafe/jev-*`](https://openrouter.ai/docs/guides/community/jev) or [`typesafe/jev-router`](https://openrouter.ai/docs/guides/routing/routers/jev-router) | OpenRouter when you want structured routing instead of a fixed chat model |
 
 ```bash
 export OPENROUTER_API_KEY="…"

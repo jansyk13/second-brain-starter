@@ -59,8 +59,10 @@ Follow `INSTALL.md` in the kit. **Favour official setups** — do not vendor or 
 2. Merge into `~/.hindsight/cursor.json` (user-global; create if missing) without wiping existing keys:
    - `useLocalDaemon: true`, empty `hindsightApiUrl`, `apiPort: 9077`
    - Agnostic `bankMission` / `retainMission` (no project/vault names)
-   - Recommend OpenRouter + GLM extract: `llmProvider: "openrouter"`, `llmModel` = current OpenRouter `z-ai/glm-*-flash` id, `llmApiKeyEnv: "OPENROUTER_API_KEY"`
-   - Recommend Qwen for Cursor coding (model picker — not this file)
+   - Recommend **Qwen + GLM + Jev** via OpenRouter:
+     - Cursor/coding → **Qwen** (model picker)
+     - Hindsight extract → **GLM** (`llmProvider: "openrouter"`, `llmModel` = current `z-ai/glm-*-flash`, `llmApiKeyEnv: "OPENROUTER_API_KEY"`)
+     - Optional routing/decisions → **Jev** / Jev Router (`typesafe/jev-*`, `typesafe/jev-router`)
 3. Probe `curl -sf http://127.0.0.1:9077/health`. If down: ensure `uv`/`uvx` + API key; allow plugin auto-start or run official embed start commands from `INSTALL.md` §4c.
 4. Remind user to **fully quit and reopen Cursor**.
 
