@@ -21,7 +21,7 @@ The vault template path is literally `obsidian/{{PROJECT}}/` — `{{PROJECT}}` i
 ## Quick start
 
 ```bash
-git clone https://github.com/<you>/second-brain-starter.git
+git clone https://github.com/jansyk13/second-brain-starter.git
 ```
 
 1. **Open this kit** as a Cursor workspace (so the `install-second-brain` skill is available).
